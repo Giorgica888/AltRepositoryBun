@@ -61,6 +61,10 @@ class MarketingManager(Employee):
     def __init__(self, name, email, campaing_budget):
         super().__init__(name, email)
         self.camapaign_budget = campaing_budget
+
+    def send_email(self, subject, message, email):
+        super().send_email(subject, message, email)
+        print(f"The campaing budget {self.camapaign_budget}")
         
 
 if __name__ == "__main__":
@@ -75,5 +79,5 @@ if __name__ == "__main__":
     the_intern.work_on_progress()
     the_intern.information("de munca", "avem de treaba", "undeva@gemai.com")
 
-    manag = SalesManager("ghiorghe", "ghiorghe@jorj.com", 200)
-    manag.information(analizator.name, "aicic e munca", "manca boss", email=analizator.email)
+    ilmanager = MarketingManager("marco", "marco@marcopolo.srl", "priceless")
+    ilmanager.send_email("de munca", "avem de treaba", "undeva@gemai.com")
