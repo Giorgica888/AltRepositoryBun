@@ -48,6 +48,52 @@ class SubscriptionProduct(OnlineProduct):
     def display_details(self):
         print(f"{self.name} costs {self.calculate_discount()} with {self.discount} discount.\n Subscription duration : {self.duration}")
 
+
+class Order(ABC):
+    def calculate_total(self):
+        pass
+
+    def send_confirmation(self):
+        pass
+
+class OnlineOrder(Order):
+    def __init__(self, products : list):
+        #checking the list
+        self.products = products
+
+
+    def calculate_total(self):
+        sum = 0
+        for i in self.products:
+            sum += i
+        print(sum)
+
+    def send_confirmation(self, value : float):
+        print(f"Invoice : {value} |||| With products: \n {self.products} Those are on they'r way to you :)")
+
+class InStoreOrder(Order):
+    def __init__(self, products : list):
+        #checking the list
+        self.products = products
+        self.total_sum = 0
+
+
+    def calculate_total(self):
+        sum = 0
+        for i in self.products:
+            sum += i
+        self.total_sum = sum
+        print(self.total_sum)
+
+    def send_confirmation(self):
+        print(f"Shop SRL")
+        sum = 0
+        for i in self.products:
+            print(i)
+        print(f"Total : {self.total_sum}")
+        self.total_sum = 0
+
+
     
 
 if __name__ == "__main__":
@@ -66,6 +112,13 @@ if __name__ == "__main__":
 
     gym.display_details()
     print(gym.calculate_discount())
+
+    geaca = OnlineOrder([2, 3, 4])
+    geaca.calculate_total()
+
+    order2 = InStoreOrder([4, 2, 4])
+    order2.calculate_total()
+    order2.send_confirmation()
 
 
 
